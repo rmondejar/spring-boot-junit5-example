@@ -1,0 +1,14 @@
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_mobile
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: secret_user
+    password: secret_pass
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
