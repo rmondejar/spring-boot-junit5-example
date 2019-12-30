@@ -6,9 +6,9 @@ import example.exception.EntityNotFoundException;
 import example.model.Author;
 import example.repository.AuthorRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 @Service
@@ -17,7 +17,7 @@ public class AuthorService {
     private final AuthorRepository authorRepository;
     private final ModelMapper modelMapper;
 
-    @Inject
+    @Autowired
     public AuthorService(AuthorRepository authorRepository, ModelMapper modelMapper) {
         this.authorRepository = authorRepository;
         this.modelMapper = modelMapper;

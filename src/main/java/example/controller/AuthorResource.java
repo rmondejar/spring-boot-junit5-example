@@ -7,11 +7,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 
@@ -23,7 +23,7 @@ public class AuthorResource {
 
     private final AuthorService authorService;
 
-    @Inject
+    @Autowired
     public AuthorResource(AuthorService authorService) {
         this.authorService = authorService;
     }

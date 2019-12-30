@@ -18,7 +18,6 @@
         <springfox.version>2.9.2</springfox.version>
         <lombok.version>1.18.4</lombok.version>
         <modelmapper.version>2.3.5</modelmapper.version>
-        <springfox.version>2.9.2</springfox.version>
         <maven.jacoco.version>0.8.5</maven.jacoco.version>
     </properties>
 
@@ -55,11 +54,6 @@
         </dependency>
 
         <!-- common -->
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

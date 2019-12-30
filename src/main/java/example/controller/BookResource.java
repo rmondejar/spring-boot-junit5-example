@@ -3,7 +3,6 @@ package example.controller;
 import java.net.URI;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 
 import example.dto.BookDto;
@@ -13,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,7 +25,7 @@ public class BookResource {
 
     private final BookService bookService;
 
-    @Inject
+    @Autowired
     public BookResource(BookService bookService) {
         this.bookService = bookService;
     }
