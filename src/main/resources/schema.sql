@@ -1,4 +1,6 @@
+drop table if exists book;
 drop table if exists author;
+
 create table author
 (
     id                    bigint(20) not null auto_increment,
@@ -8,7 +10,6 @@ create table author
     primary key (id)
 );
 
-drop table if exists book;
 create table book
 (
     id                    bigint(20) not null auto_increment,

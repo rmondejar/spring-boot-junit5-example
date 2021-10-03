@@ -1,23 +1,21 @@
 package example.controller;
 
-import java.net.URI;
-import java.util.List;
-
-import javax.validation.Valid;
-
 import example.dto.BookDto;
 import example.service.BookService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.*;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@Api(value="Book Resource Endpoint")
+import java.net.URI;
+import java.util.List;
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
@@ -30,9 +28,11 @@ public class BookResource {
         this.bookService = bookService;
     }
 
-    @ApiOperation(value = "Gets the list of available books")
+    @Operation(summary = "Gets the list of available books")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = List.class)
+            @ApiResponse(responseCode = "200", description = "Found the books",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = List.class)) }),
     })
     @GetMapping(path = "/books", produces = {"application/json"})
     public ResponseEntity<List<BookDto>> list() {
@@ -41,14 +41,15 @@ public class BookResource {
         return ResponseEntity.ok(bookService.list());
     }
 
-    @ApiOperation(value = "Retrieves the requested book")
+    @Operation(summary = "Get a book by its id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = BookDto.class),
-            @ApiResponse(code = 400, message = "Bbook Request"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 422, message = "Unprocessable Entity"),
-            @ApiResponse(code = 500, message = "Internal Server Error")
-    })
+            @ApiResponse(responseCode = "200", description = "Found the book",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = BookDto.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "Book not found",
+                    content = @Content) })
     @GetMapping(path = "/books/{id}", produces = {"application/json"})
     public ResponseEntity<BookDto> get(@PathVariable("id") Long bookId) {
 
@@ -56,13 +57,13 @@ public class BookResource {
         return ResponseEntity.ok(bookService.get(bookId));
     }
 
-    @ApiOperation(value = "Creates a new book")
+    @Operation(summary = "Creates a new book")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Created"),
-            @ApiResponse(code = 400, message = "Bbook Request"),
-            @ApiResponse(code = 422, message = "Unprocessable Entity"),
-            @ApiResponse(code = 500, message = "Internal Server Error")
-    })
+            @ApiResponse(responseCode = "201", description = "Created the book"),
+            @ApiResponse(responseCode = "400", description = "Bad request",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error",
+                    content = @Content) })
     @PostMapping(path = "/books", consumes = {"application/json"})
     public ResponseEntity<Void> create(@Valid @RequestBody BookDto bookDto) {
 

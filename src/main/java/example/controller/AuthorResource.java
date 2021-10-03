@@ -2,10 +2,10 @@ package example.controller;
 
 import example.dto.AuthorDto;
 import example.service.AuthorService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 
-@Api(value="Author Resource Endpoint")
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
@@ -28,13 +27,13 @@ public class AuthorResource {
         this.authorService = authorService;
     }
 
-    @ApiOperation(value = "Creates a new author")
+    @Operation(summary = "Creates a new author")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Created"),
-            @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 422, message = "Unprocessable Entity"),
-            @ApiResponse(code = 500, message = "Internal Server Error")
-    })
+            @ApiResponse(responseCode = "201", description = "Created the author"),
+            @ApiResponse(responseCode = "400", description = "Bad request",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error",
+                    content = @Content) })
     @PostMapping(path = "/authors", consumes = {"application/json"})
     public ResponseEntity<Void> create(@Valid @RequestBody AuthorDto authorData) {
 
@@ -47,13 +46,13 @@ public class AuthorResource {
         return ResponseEntity.created(location).build();
     }
 
-    @ApiOperation(value = "Removes the requested author")
+    @Operation(summary = "Removes a requested author")
     @ApiResponses(value = {
-            @ApiResponse(code = 204, message = "No Content"),
-            @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 500, message = "Internal Server Error")
-    })
+            @ApiResponse(responseCode = "204", description = "No Content"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "404", description = "Not Found"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error",
+                    content = @Content) })
     @DeleteMapping(path = "/authors/{id}", produces = {"application/json"})
     public ResponseEntity<Void> delete(@PathVariable("id") Long authorId) {
 

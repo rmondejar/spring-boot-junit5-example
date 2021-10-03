@@ -75,6 +75,6 @@ open http://localhost:8080/h2-console
 API Documentation (Swagger): 
 
 ```
-open http://localhost:8080/v2/api-docs
+open http://localhost:8080/v3/api-docs
 open http://localhost:8080/swagger-ui.html
 ```

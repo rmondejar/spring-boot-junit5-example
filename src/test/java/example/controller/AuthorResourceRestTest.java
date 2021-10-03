@@ -20,7 +20,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpStatus.*;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = Application.class)
 @ActiveProfiles("test")
 @DisplayName("Author Resource REST API Tests")
