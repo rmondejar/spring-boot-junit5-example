@@ -1,3 +1,9 @@
+# Example Project
+## Spring Boot 2.7.5 & Open API 3
+
+## Related Article: 
+https://ruuben.medium.com/documenting-spring-boot-2-5-x-apis-using-openapi-3-0-6334984c6744
+
 # Build guide
 ## Gradle
 
