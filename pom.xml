@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.5</version>
+        <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -16,8 +16,8 @@
     <properties>
         <java.version>11</java.version>
         <start-class>example.Application</start-class>
-        <springdoc-openapi.version>1.5.10</springdoc-openapi.version>
-        <modelmapper.version>2.4.4</modelmapper.version>
+        <springdoc-openapi.version>1.6.12</springdoc-openapi.version>
+        <modelmapper.version>3.1.0</modelmapper.version>
         <maven.jacoco.version>0.8.7</maven.jacoco.version>
     </properties>
 
