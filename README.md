@@ -4,7 +4,7 @@
 ### Testing
 First check that you are able to compile and pass the tests:
 ```
-gradle test
+./gradlew test
 ```
 
 For test report and code coverage: 
@@ -12,7 +12,7 @@ For test report and code coverage:
 ```
 open build/reports/tests/test/index.html
 
-gradle build jacocoTestReport
+./gradlew build jacocoTestReport
 open build/reports/jacoco/test/html/index.html
 ```
 
@@ -21,13 +21,13 @@ open build/reports/jacoco/test/html/index.html
 To run the backend API locally: 
 
 ```
-gradle bootRun
+./gradlew bootRun
 ```
 
 Otherwise, to build it as a fat jar and execute it:
 
 ```
-gradle bootJar
+./gradlew bootJar
 java -jar build/libs/spring-boot-junit5-example-1.0-SNAPSHOT.jar
 ```
 
